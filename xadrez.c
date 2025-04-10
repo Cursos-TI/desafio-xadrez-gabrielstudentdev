@@ -26,5 +26,22 @@ int main() {
         k++;
     } while (k < casasRainha);
 
+    // Simulação do movimento do Cavalo em "L"
+    int movimentoCompleto = 1; // Flag para controlar o movimento completo do Cavalo
+    printf("\nMovimento do Cavalo:\n");
+
+    while (movimentoCompleto--) {
+        // Movimento de duas casas para baixo
+        for (int i = 0; i < 2; i++) {
+            printf("Baixo\n");
+        }
+
+        // Movimento de uma casa para a esquerda
+        int esquerda = 1;
+        while (esquerda--) {
+            printf("Esquerda\n");
+        }
+    }
+
     return 0;
 }
