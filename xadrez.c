@@ -1,47 +1,69 @@
 #include <stdio.h>
 
+// Função recursiva para movimento da Torre (para a direita)
+void moverTorre(int casas) {
+    if (casas <= 0) return;
+    printf("Direita\n");
+    moverTorre(casas - 1); // chamada recursiva
+}
+
+// Função recursiva para o Bispo (diagonal: cima direita)
+void moverBispoRecursivo(int casas) {
+    if (casas <= 0) return;
+    printf("Cima Direita\n");
+    moverBispoRecursivo(casas - 1);
+}
+
+// Função recursiva para movimento da Rainha (para a esquerda)
+void moverRainha(int casas) {
+    if (casas <= 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+// Função com loops aninhados para o movimento do Bispo
+void moverBispoComLoops(int casas) {
+    printf("Movimento do Bispo (com loops aninhados):\n");
+    for (int v = 0; v < casas; v++) { // vertical
+        for (int h = 0; h < 1; h++) { // horizontal (1 casa por linha diagonal)
+            printf("Cima Direita\n");
+        }
+    }
+}
+
+// Função com loops complexos para o movimento do Cavalo
+void moverCavalo() {
+    printf("Movimento do Cavalo:\n");
+    for (int v = 2; v >= 1; v--) {        // duas casas para cima
+        for (int h = 1; h <= 1; h++) {    // uma casa para a direita
+            if (v == 1 && h == 1) {
+                printf("Cima\n");
+                printf("Cima\n");
+                printf("Direita\n");
+                break; // movimento completo
+            }
+        }
+    }
+}
+
 int main() {
-    // Simulação do movimento da Torre para a direita (usando for)
     int casasTorre = 5;
-    printf("Movimento da Torre:\n");
-    for (int i = 0; i < casasTorre; i++) {
-        printf("Direita\n"); // Movimento horizontal
-    }
-
-    // Simulação do movimento do Bispo na diagonal (usando while)
     int casasBispo = 5;
-    int j = 0;
-    printf("\nMovimento do Bispo:\n");
-    while (j < casasBispo) {
-        printf("Cima Direita \n"); // Movimento diagonal
-        j++;
-    }
-
-    // Simulação do movimento da Rainha para a esquerda (usando do-while)
     int casasRainha = 8;
-    int k = 0;
+
+    printf("Movimento da Torre:\n");
+    moverTorre(casasTorre);
+
+    printf("\nMovimento do Bispo (recursivo):\n");
+    moverBispoRecursivo(casasBispo);
+
+    moverBispoComLoops(casasBispo);
+
     printf("\nMovimento da Rainha:\n");
-    do {
-        printf("Esquerda\n"); // Movimento horizontal
-        k++;
-    } while (k < casasRainha);
+    moverRainha(casasRainha);
 
-    // Simulação do movimento do Cavalo em "L"
-    int movimentoCompleto = 1; // Flag para controlar o movimento completo do Cavalo
-    printf("\nMovimento do Cavalo:\n");
-
-    while (movimentoCompleto--) {
-        // Movimento de duas casas para baixo
-        for (int i = 0; i < 2; i++) {
-            printf("Baixo\n");
-        }
-
-        // Movimento de uma casa para a esquerda
-        int esquerda = 1;
-        while (esquerda--) {
-            printf("Esquerda\n");
-        }
-    }
+    printf("\n");
+    moverCavalo();
 
     return 0;
 }
